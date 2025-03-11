@@ -1,0 +1,62 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+#define i 8
+
+
+int main(){
+    system("chcp 65001");
+    int array[i], n;
+    puts("Введіть 8 цифр: ");
+
+    for (n = 0; n < i ; n+=1) { 
+    scanf("%i", &array[n]);
+    }
+    
+    int sum = 0; 
+    int count = 0; 
+    int multiplication = 1;
+
+    for (n = 0; n < i ; n+=1 ) { 
+    if ( array[n] % 2 == 0 ){
+        sum+=array[n];
+        count+=1;
+    }
+    else {
+        multiplication*=array[n];
+    }
+    }
+    
+    int max = array[0];
+    int number = 0;  
+
+    for (n = 0; n < i ; n+=1){
+        if(array[n]>max){
+            max = array[n];
+            number = n;
+        }
+    }
+
+    printf("в) Максимальне значення: %d\tЙого номер становить: %d\t\n", max, number);
+
+    float averageG;
+
+    if (multiplication != 1) {
+    printf("б) Добуток непарних чисел: %.1d\n", multiplication);
+    averageG = sqrt(multiplication);
+    printf("Середнє геометричне значення непарних чисел: %.2f\n", averageG);
+    }
+    else{
+        puts( "Всі числа парні, спробуйте інші! Добуток непарних чисел і їх середнє геометричне значення неможливе!");
+    }
+
+    printf("a) Сума парних чисел: %i\n", sum);
+
+    float averageA;
+    if(count){
+        averageA = (float)sum / count;
+    }
+    printf("Середнє арифметичне значення парних чисел: %.1f\n", averageA);
+    
+    return 0;
+}
